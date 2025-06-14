@@ -1,0 +1,57 @@
+<%-layout('layouts/boilerplate.ejs')-%>
+<body>
+    <div class="row">    
+        <div class="col-7 offset-2">
+            <h3 class="mt-2">Edit listing</h3>
+        <form action="/listings/<%=record._id%>?_method=PUT" method="POST" class="needs-validation" enctype="multipart/form-data" novalidate>
+        <div class="mb-3">
+            <label for="label"class="form-label">Title</label>
+            <input type="text" placeholder="Enter title" name="listings[title]" id="label" value="<%=record.title%>" class="form-control"required>
+            <div class="valid-feedback">Good Title.</div>
+        </div>
+        <div class="mb-3">
+            <label for="label" class="form-label">Description</label>
+            <textarea type="text" name="listings[description]" id=""placeholder="enter description" rows="4"cols="20"class="form-control"required><%=record.description%></textarea>
+            <div class="invalid-feedback">Please enter at least a line of Description.</div>
+        </div>
+            <div class="col-4 mb-2 ">
+            <p>Original Listing Image</p>  
+            <img  class="img-fluid h-100"src="<%=originalUrl%>" alt="image">
+            </div>
+        <div class="mb-3">
+            <label for="image" class="form-label">Upload new Listing Image</label>
+            <input type="file" name="listings[image]" id="image" class="form-control">
+            <!-- <div class="invalid-feedback">Image is require</div> -->
+        </div>
+        <div class="row">
+        <div class="mb-3 col-4">
+            <label for="price" class="form-label">Price</label>
+            <input type="number"name="listings[price]" id="price"placeholder="Enter price" value="<%=record.price%>"class="form-control"required>
+            <div class="invalid-feedback">Enter the valid price</div>
+        </div>
+        <div class="mb-3 col-8">
+            <label for="country" class="form-label">
+            Country
+            </label>
+            <input type="text" name="listings[country]" id="country"placeholder="Enter country" value="<%=record.country%>"class="form-control"required>
+            <div class="invalid-feedback">Country name is valid</div>
+        </div>
+    </div>
+        <div class="mb-3">
+        <label for="location" class="form-label">
+         Location
+        </label>
+        <input type="text" name="listings[location]" id="location"placeholder="Enter location" value="<%=record.location%>"class="form-control" required>
+        <div class="invalid-feedback">location should be straignt forward.</div>  
+    </div>
+       <div class="mb-3">
+           <button type="submit" value="Edit" class="btn-edit btn">
+                   Edit
+           </button>     
+        </div>
+    </form>
+</div>
+</div>
+
+</body>
+</html>

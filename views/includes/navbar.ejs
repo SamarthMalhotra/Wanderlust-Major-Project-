@@ -1,0 +1,40 @@
+<style>
+  .searchbox{
+    margin-left:25vw;
+     padding:10px;
+      }
+</style>
+<body>
+    <nav class="navbar navbar-expand-md bg-body-tertiary sticky-top border-bottom">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/listings"><i class="fa-regular fa-compass"></i></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <a class="nav-link" href="/listings">Explore</a>
+            </div>
+         <div class="d-flex searchbox">
+              <!-- Search Input Block -->
+           <div class="d-flex border border-secondry rounded bg-light">
+            <input type="text" class="form-control border-0" placeholder="Enter place" style="max-width: 200px;">
+            <input type="text" class="form-control  border-0 ms-1" placeholder="Country" style="max-width: 175px;">
+          </div>
+            <!-- Search Button (Outside the block) -->
+            <button class="btn btn-danger ms-1 ">Search</button>
+       </div>
+
+            <div class="navbar-nav ms-auto">
+              <a class="nav-link" href="/listings/new">Airbnb your home</a>
+              <%if(!currUser){%>
+              <a class="nav-link active" href="/user/signup"><b>Sign up</b></a>
+              <a class="nav-link" href="/user/login"><b>Log in</b></a>
+              <%}%><%if(currUser){%>
+              <a class="nav-link" href="/user/logout"><b>Log out</b></a>
+              <%}%>
+            </div>
+          </div>
+        </div>
+      </nav>
+</body>

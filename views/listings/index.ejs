@@ -1,0 +1,170 @@
+<% layout('layouts/boilerplate')%>
+<style>
+
+    #filter{
+        display:flex;
+        flex-wrap:wrap;
+    }
+    .filter{
+        margin-left:1.5rem;
+        margin-right:1.5rem;
+        margin-top:0.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content:center;
+        align-items: center;
+        opacity:0.8;
+        font-size:0.8rem;
+    }
+    
+    .filter:hover{
+        opacity:1;
+        cursor: pointer;
+     }
+
+     .slidebar{
+        height:60vh;
+        border-radius:4px;
+        object-fit: cover;
+     }
+     
+    .imagebox{
+       height:96%;
+       width:55%;
+       object-fit:cover;  
+       margin-left:0.5rem;
+    }
+
+    .box{
+        display:flex;
+        flex-wrap:wrap;
+        background-color:white;
+        height:100%;
+        width:60%;
+     }
+    .imagebox1{
+       height:46%;
+       width:48%;
+       object-fit:cover;
+       margin-left:4px;
+    }
+    .imagebox1 img  , .imagebox img{
+        border-radius:5px;
+        height:100%;
+    }
+     .tax-info{
+        display:none;
+     }
+     .tax-switch{
+        border:1.5px solid black;
+        border-radius:15px;
+        padding-right:0.25rem;
+        padding-left:0.25rem;
+        height:2.5rem;
+    }
+</style>
+<body> 
+    <div id="filter">
+                <div class="filter">
+                    <i class="fa-solid fa-fire"></i>
+                    <p>Trending</p>                 
+                </div>
+                 <div class="filter">
+                  <i class="fa-solid fa-bed"></i>
+                    <p>Rooms</p>                 
+                </div>
+                 <div class="filter">
+                    <i class="fa-solid fa-mountain-city"></i>
+                    <p>Iconic Cities</p>                 
+                </div>
+                 <div class="filter">
+                    <i class="fa-solid fa-mountain"></i>
+                    <p>Mountains</p>                 
+                 </div>
+                  <div class="filter">
+                    <i class="fa-brands fa-fort-awesome"></i>
+                    <p>Castles</p>                 
+                </div>
+                <div class="filter">
+                    <i class="fa-solid fa-hotel"></i>
+                    <p>Hotels</p>                 
+                </div>
+                 <div class="filter">
+                    <i class="fa-solid fa-person-swimming"></i>
+                    <p>Amazing Pools</p>                 
+                </div>
+                <div class="filter">
+                 <i class="fa-solid fa-campground"></i>
+                    <p>Camping</p>                 
+                </div>
+                 <div class="filter">
+                  <i class="fa-solid fa-cow"></i>
+                    <p>Farms</p>                 
+                </div>
+                 <div class="filter">
+                  <i class="fa-solid fa-snowflake"></i>
+                    <p>Arctic</p>                 
+                </div>
+                <div class="filter tax-switch"><div class="form-check-reverse form-switch">
+                 <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault"style="width:32px;">
+                 <label class="form-check-label" for="switchCheckDefault"><b>&nbsp;Display total after tax&nbsp;</b></label>
+                </div></div>
+                
+            </div>
+        <div id="carouselExample" class="carousel slide">
+             <div class="carousel-inner">
+                 <div class="carousel-item active slidebar d-flex">
+                   <div class="imagebox">
+                     <img src="https://assets.simplotel.com/simplotel/image/upload/x_243,y_0,w_3882,h_2912,r_0,c_crop,q_80,fl_progressive/w_1350,f_auto,c_fit/stone-wood-riverfront-resort-siolim/PROPERTY_VIEW_h4rp5s" class="d-block w-100" alt="...">
+                     </div>
+             <div class="box">
+                 <div class="imagebox1">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkZW598rnqR19l72Rm_IclGRqqOpWQyYC5SA&s" class="d-block w-100" alt="short-image1">
+                   </div>
+                <div class="imagebox1">
+                      <img src="https://cdn.beachcomber-hotels.com/v9/sites/default/files/styles/slider_cluster_2_desktop/public/shandrani/shandrani-rooms-slider-d.webp?itok=e-NYyeYw" class="d-block w-100" alt="short-image2">
+                </div>
+              <div class="imagebox1">
+                  <img src="https://5.imimg.com/data5/QW/RK/MY-14170015/resort-garden-designing-services.png" class="d-block w-100" alt="short-image3">
+              </div>
+              <div class="imagebox1">
+                 <img src="https://www.sunpeaksresort.com/sites/default/files/inline-images/Hole16.jpg" class="d-block w-100" alt="short-image4">
+              </div>
+             </div>
+          </div>
+        </div>
+    </div>
+        <div class="row  row-cols-lg-3  row-cols-md-2  row-cols-sm-1" >
+              <%for(list of Alllisting){%>
+               <a href="/listings/<%=list._id%>" class="listing-link">
+                <div class="card col card-listing" style="max-width:26rem;">
+                    <img src=<%=list.image.url%> class="card-img-top" alt="image">
+                    <div class="card-img-overlay card-blur"></div>
+                    <div class="card-body">
+                        <p class="card-text">
+                           <b> <%=list.title%></b>
+                            <br>
+                            &#8377;<%=list.price.toLocaleString("en-IN")%><i class="tax-info"> &nbsp;+18%GST </i>                                          
+                    </div>
+                  </div>
+                </a>
+            <%}%>    
+        </div>
+
+</body>
+<script>
+
+    let taxSwitch=document.getElementById("switchCheckDefault");
+    taxSwitch.addEventListener("click",()=>{
+        let taxInfo=document.querySelectorAll(".tax-info");
+        for(tax of taxInfo){
+        if(tax.style.display!="inline")
+        {   
+            tax.style.display="inline";
+        }else{
+            tax.style.display="none";
+        }
+        }
+    });
+
+</script>
