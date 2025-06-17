@@ -10,6 +10,7 @@ const {storage}=require("../cloudConfig.js");
 const upload = multer({storage});  
 // Show the new listing form
 router.get("/new",loggedIn,listingModules.newLisitng);
+router.get("/search", listingModules.searchListing);
 
 router.route("/")
 //listing route it show the all records
@@ -36,7 +37,4 @@ router.route("/:id")
 //Edit the Record  
 router.get("/:id/edit",loggedIn ,isOwner ,Wrapasync(listingModules.editformRender)
   );
-  
-  
-
 module.exports=router;

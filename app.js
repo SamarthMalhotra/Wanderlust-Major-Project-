@@ -1,3 +1,4 @@
+const listing = require("./models/Listing.js");
 if(process.env.NODE_ENV!="Production"){  
     require('dotenv').config();
 }
@@ -52,12 +53,6 @@ app.use(express.urlencoded({extended:true}));
 
 
 app.use(express.json());
-
-//Mongoose connnection start
-
-
-
-
 const ExpressError=require("./Utils/ExpressError.js");
 const listingsRoute=require("./Router/listing.js");
 const reviewsRoute=require("./Router/reviews.js");
@@ -83,27 +78,27 @@ main().then((response)=>{
   console.log("MONGO DB is connected");
 }).catch((err) =>{
   console.log("ERROR",err);
-  });
+});
   async function main() {
     await mongoose.connect(dburl);
 }
-
-// app.get("/",(req,res)=>{
-//     res.send("Request is working");
-// });
+app.get("/",(req,res)=>{
+    res.redirect("/listings");
+});
 
 app.use("/listings",listingsRoute);
 app.use("/listings/:id/review",reviewsRoute);
 app.use("/user",userRoute);
+app.listen(8080,(req,res)=>{
+  console.log("Request is listen");
+});
+
 
 app.all(/.*/,(req,res,next)=>{
   next(new ExpressError(404,"Page not found"));
 });
+
 app.use((err,req,res,next)=>{
   let {statusCode=500,message="Something went wrong"} = err;
   res.status(statusCode).render("Error.ejs",{ err });
-});
-//Server starting
-app.listen(8080,(req,res)=>{
-  console.log("Request is listen");
 });

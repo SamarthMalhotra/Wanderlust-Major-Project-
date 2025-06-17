@@ -15,15 +15,17 @@
             <div class="navbar-nav">
               <a class="nav-link" href="/listings">Explore</a>
             </div>
+        <form action="/listings/search" method="get">              
          <div class="d-flex searchbox">
-              <!-- Search Input Block -->
-           <div class="d-flex border border-secondry rounded bg-light">
-            <input type="text" class="form-control border-0" placeholder="Enter place" style="max-width: 200px;">
-            <input type="text" class="form-control  border-0 ms-1" placeholder="Country" style="max-width: 175px;">
+          <!-- Search Input Block -->
+            <div class="d-flex border border-secondry rounded bg-light">
+            <input type="text" class="form-control border-0" placeholder="Enter place" style="max-width: 200px;" name="place">
+            <input type="text" class="form-control  border-0 ms-1" placeholder="Country" style="max-width: 175px;" name="country">
           </div>
             <!-- Search Button (Outside the block) -->
             <button class="btn btn-danger ms-1 ">Search</button>
-       </div>
+        </div>
+      </form>
 
             <div class="navbar-nav ms-auto">
               <a class="nav-link" href="/listings/new">Airbnb your home</a>
@@ -37,4 +39,13 @@
           </div>
         </div>
       </nav>
+  <div class="searchbar-wrapper bg-white border-bottom w-100" style="position: sticky; top: 56px; z-index: 1029;">
+    <form action="/listings/search" method="get" class="container py-2 d-flex flex-wrap align-items-center justify-content-between">
+     <div class="d-flex flex-wrap gap-2">
+      <input type="text" class="form-control" name="place" placeholder="Enter place" style="max-width: 200px;">
+      <input type="text" class="form-control" name="country" placeholder="Country" style="max-width: 175px;">
+        </div>
+      <button class="btn btn-danger ms-2">Search</button>
+   </form>
+    </div>
 </body>

@@ -6,7 +6,6 @@ module.exports.index=async (req,res,next)=>{
      const Alllisting=await listing.find({});
        res.render("./listings/index.ejs",{Alllisting});
 };
-
 module.exports.newLisitng=(req,res)=>{
     res.render("./listings/new_record.ejs");
 };
@@ -77,3 +76,22 @@ module.exports.destroyListing=async (req,res,next)=>{
   req.flash('success','Listing is Deleted');
   res.redirect("/listings");
 };    
+module.exports.searchListing=async (req, res) => {
+  try {
+    let { place, country } = req.query;
+    let Alllisting=[];
+    place=(place.charAt(0).toUpperCase() +place.slice(1)).trim();
+    country=country.charAt(0).toUpperCase()+country.slice(1);
+    const countryData = await listing.find({ country });
+    const locationData = await listing.find({ location: place });
+    let uniqueCountryData = countryData.filter(countryItem => {
+    const match = locationData.find(locationItem => locationItem._id.equals(countryItem._id));
+    return !match;
+     });
+       Alllisting.unshift(...locationData); 
+       Alllisting.push(...uniqueCountryData);
+    res.render("./listings/index.ejs",{Alllisting});
+  } catch (err) {
+    console.error("Search Route Error:", err);
+  }
+};
