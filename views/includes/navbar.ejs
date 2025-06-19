@@ -3,6 +3,21 @@
     margin-left:25vw;
      padding:10px;
       }
+      .hidden-search-bar{
+        display:none;
+      }
+      @media (max-width:767px){
+        .navdesign{
+         background-color:#F1F3F4;
+         border-radius:4px;
+        }
+        .searchbar-design{
+          display:none;
+        }
+        .hidden-search-bar{
+          display: inline-block;
+        }
+      }
 </style>
 <body>
     <nav class="navbar navbar-expand-md bg-body-tertiary sticky-top border-bottom">
@@ -11,11 +26,11 @@
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="collapse navbar-collapse navdesign" id="navbarNavAltMarkup">
             <div class="navbar-nav">
               <a class="nav-link" href="/listings">Explore</a>
             </div>
-        <form action="/listings/search" method="get">              
+        <form action="/listings/search" method="get" class="searchbar-design">              
          <div class="d-flex searchbox">
           <!-- Search Input Block -->
             <div class="d-flex border border-secondry rounded bg-light">
@@ -39,13 +54,13 @@
           </div>
         </div>
       </nav>
-  <div class="searchbar-wrapper bg-white border-bottom w-100" style="position: sticky; top: 56px; z-index: 1029;">
-    <form action="/listings/search" method="get" class="container py-2 d-flex flex-wrap align-items-center justify-content-between">
-     <div class="d-flex flex-wrap gap-2">
-      <input type="text" class="form-control" name="place" placeholder="Enter place" style="max-width: 200px;">
-      <input type="text" class="form-control" name="country" placeholder="Country" style="max-width: 175px;">
+  <div class="searchbar-wrapper bg-white border-bottom w-100 hidden-search-bar" style="position: sticky; top: 56px; z-index:2;">
+    <form action="/listings/search" method="get" class="container py-2 d-flex flex-wrap align-items-center justify-content-center border border-white border-2">
+     <div class="d-flex flex-wrap gap-2  white-border bg-light ">
+      <input type="text" class="form-control" name="place" placeholder="Enter place" style="max-width: 110px;">
+      <input type="text" class="form-control" name="country" placeholder="Country" style="max-width: 110px;">
         </div>
       <button class="btn btn-danger ms-2">Search</button>
    </form>
-    </div>
+  </div>
 </body>
