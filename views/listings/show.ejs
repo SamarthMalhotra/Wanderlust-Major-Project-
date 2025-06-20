@@ -5,14 +5,15 @@
     let mlocation=JSON.stringify("<%-record.location%>");
     let mcoordinates="<%-JSON.stringify(record.geometry.coordinates)%>";
 </script>
+
 <body>
     <div class="row mt-2">
-        <div class="col offset-2">
-            <h2 class="offset-2 mt-2">
+        <div class="col offset-md-2  offset-0 responsive-image-box">
+            <h2 class="offset-md-2 mt-1 offset-0">
                 <p class="card-text">
                   <%=record.title%>
             </h2>
-        <div class="card card-listing col-6 offset-2">
+        <div class="card card-listing col-md-6 offset-md-2 col-12 offset-0">
              <img src="<%=record.image.url%>" alt="image"class="card-img card-img-top">
             <div class="card-body mt-2">
                 Owner: <b><%=record.owner.username%></b>
@@ -37,10 +38,10 @@
         </div>
         </div>
         <div class="row">
-        <div class="col-6 offset-3">
+        <div class="col-md-6 offset-md-3 col-12 offset-0">
              <%if(currUser){%>
         <hr>
-         <form method="POST" action="/listings/<%=record._id%>/review" novalidate class="ms-5 needs-validation"> 
+         <form method="POST" action="/listings/<%=record._id%>/review" novalidate class="ms-md-5 needs-validation"> 
             <h4>Leave a review</h4>
              <div class="mb-1 mt-1 ms-1">
                 <label for="rating" class="form-label"><b>Rating</b></label>
@@ -58,7 +59,7 @@
                      <label for="first-rate5" title="Amazing">5 stars</label>
                    </fieldset>
              </div>
-             <div class="mb-1 mt-1 ms-2">
+             <div class="mb-1 mt-1 ms-md-2">
                  <label for="comment" class="form-label"><b>Comment</b></label>
                  <textarea class="form-control" id="comment" col="30" row="10" name="review[comment]" required></textarea>
                  <div class="invalid-feedback">Add some comment</div>                
@@ -68,11 +69,11 @@
          <%}%>        
          <hr>
         <%if((record.reviews.length)>0){%>
-         <div class="col-12 mt-2">
-         <h5 class="ms-5">All Reviews</h5>
-        <div class=" row ms-4">
+         <div class="col-md-12 mt-2">
+         <h5 class="ms-md-5">All Reviews</h5>
+        <div class=" row ms-md-4">
             <% for(review of record.reviews){%>
-                <div class="card mb-3 ms-4 col-5 border-black" style="min-width:10rem; max-width:20rem;">
+                <div class="card mb-3 ms-md-4 col-md-5  border-black responsive-review-box ms-sm-2" style="min-width:10rem; max-width:20rem;">
                     <div class="card-body " style="max-width:18rem;">
                         <div class="card-title pt-1"><b><%=review.author.username%></b></div>
                         <p class="starability-result card-text" data-rating="<%=review.rating%>">
@@ -92,9 +93,9 @@
        </div>
         <%}%>
   </div>
-       <div class="col-8 offset-3 mb-3">
-          <h3 class="mb-2 ms-5">Where you'll be</h3>
-          <div  class="ms-5" id="map"></div>
+       <div class="col-md-8 offset-md-3 mb-3 offset-0 col-12">
+          <h3 class="mb-2 ms-ms-5">Where you'll be</h3>
+          <div  class="ms-md-5" id="map"></div>
        </div>
   </div>
 

@@ -1,86 +1,14 @@
 <% layout('layouts/boilerplate')%>
-<style>
-
-    #filter{
-        display:flex;
-        flex-wrap:wrap;
-    }
-    .filter{
-        margin-left:1.5rem;
-        margin-right:1.5rem;
-        margin-top:0.5rem;
-        display: flex;
-        flex-direction: column;
-        justify-content:center;
-        align-items: center;
-        opacity:0.8;
-        font-size:0.8rem;
-    }
-    
-    .filter:hover{
-        opacity:1;
-        cursor: pointer;
-     }
-
-     .slidebar{
-        height:60vh;
-        border-radius:4px;
-        object-fit: cover;
-     }
-     
-    .imagebox{
-       height:99%;
-       width:55%;
-       object-fit:cover;  
-       margin-left:0.5rem;
-    }
-
-    .box{
-        display:flex;
-        flex-wrap:wrap;
-        background-color:white;
-        height:100%;
-        width:60%;
-     }
-    .imagebox1{
-       height:49%;
-       width:48%;
-       object-fit:cover;
-       margin-left:4px;
-    }
-    @media (max-width:767px){
-    .box{
-        width:99%;
-    }
-    .filter{
-        display:none;
-    
-    }
-     .imagebox1{
-        height:48%;
-        width:48%;
-     }
-     .imagebox{
-        display:none;
-     }
-  }
-    .imagebox1 img  , .imagebox img{
-        border-radius:5px;
-        height:100%;
-    }
-     .tax-info{
-        display:none;
-     }
-     .tax-switch{
-        border:1.5px solid black;
-        border-radius:15px;
-        padding-right:0.25rem;
-        padding-left:0.25rem;
-        height:2.5rem;
-    }
-
-</style>
 <body> 
+  <div class="searchbar-wrapper bg-white border-bottom w-100 hidden-search-bar" style="position: sticky; top: 56px; z-index:2;">
+    <form action="/listings/search" method="get" class="container py-2 d-flex flex-wrap align-items-center justify-content-center border border-white border-2">
+     <div class="d-flex flex-wrap gap-2  white-border bg-light ">
+      <input type="text" class="form-control" name="place" placeholder="Enter place" style="max-width: 110px;">
+      <input type="text" class="form-control" name="country" placeholder="Country" style="max-width: 110px;">
+        </div>
+      <button class="btn btn-danger ms-2">Search</button>
+   </form>
+  </div>
     <div id="filter">
                 <div class="filter">
                     <i class="fa-solid fa-fire"></i>

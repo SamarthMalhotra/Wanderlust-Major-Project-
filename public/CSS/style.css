@@ -116,5 +116,120 @@ body{
 #map { 
    height:50vh;
    width:40vw;
-   border:2px solid white;
+   border:1px solid white;
+   border-radius:6px;
+}
+
+/*nav bar responsive style*/
+.searchbox{
+    margin-left:25vw;
+     padding:10px;
+}
+@media (max-width:767px){
+   .navdesign{
+         background-color:#F1F3F4;
+         border-radius:4px;
+   }
+   .searchbar-design{
+         display:none;
+   }
+   .logobox{
+         margin-right:45vw;
+   }
+}
+/*Index.js responsive style*/
+
+#filter{
+        display:flex;
+        flex-wrap:wrap;
+}
+.filter{
+      margin-left:1.5rem;
+      margin-right:1.5rem;
+      margin-top:0.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content:center;
+      align-items: center;
+      opacity:0.8;
+      font-size:0.8rem;
+}
+    
+.filter:hover{
+   opacity:1;
+   cursor: pointer;
+}
+
+.slidebar{
+   height:60vh;
+   border-radius:4px;
+   object-fit: cover;
+}    
+.imagebox{
+       height:99%;
+       width:55%;
+       object-fit:cover;  
+       margin-left:0.5rem;
+}
+.box{
+      display:flex;
+      flex-wrap:wrap;
+      background-color:white;
+      height:100%;
+      width:60%;
+}
+.imagebox1{
+       height:49%;
+       width:48%;
+       object-fit:cover;
+       margin-left:4px;
+}
+@media (max-width:767px){
+    .box{
+        width:99%;
+    }
+    .filter{
+        display:none;
+    
+    }
+     .imagebox1{
+        height:48%;
+        width:48%;
+     }
+     .imagebox{
+        display:none;
+     }
+}
+.imagebox1 img  , .imagebox img{
+        border-radius:5px;
+        height:100%;
+}
+.tax-info{
+        display:none;
+}
+.tax-switch{
+        border:1.5px solid black;
+        border-radius:15px;
+        padding-right:0.25rem;
+        padding-left:0.25rem;
+        height:2.5rem;
+}
+.hidden-search-bar{
+        display:none;
+}
+@media (max-width:767px){
+        .hidden-search-bar{
+          display: inline-block;
+        }
+}
+
+/* show.css style */
+@media(max-width:767px){
+       #map{
+        height:30vh;
+        width:100%;
+       }
+       .responsive-review-box{
+        width:45vw;
+       }   
 }
